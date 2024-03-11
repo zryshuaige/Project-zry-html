@@ -1,0 +1,9 @@
+function write_title()
+{
+    document.write("1");
+    var canvas = document.getElementById("1");
+    var context = canvas.getCotext("2d");
+    context.font="bold 35px 黑体";
+    context.fillStyle="green";
+    context.fillText("TITLE",10,40,200);
+}
