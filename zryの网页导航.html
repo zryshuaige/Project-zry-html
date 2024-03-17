@@ -5,87 +5,36 @@
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.5">
 
-        <style>
-            
-            h1 {
-                margin: 0; /* 去除标题的默认边距 */
-                color: rgb(255, 255, 255); /* 设置标题的文字颜色 */
-            }
-
-            .center{
-                color:rgb(39, 148, 81);
-                text-align:center;
-                margin: 0 auto;
-            }
-
-            .left{
-                color:rgb(199, 100, 150);
-                text-align:left;
-                margin:0 auto;
-            }
-
-            .right{
-                color:rgb(217, 249, 57);
-                text-align:right;
-                margin: 0 auto;
-            }
-
-            table {
-            border-collapse: separate;
-            border-spacing: 150px 1px;  /* 设置单元格之间的间距*/
-        }
-
-        td {
-            padding: 10px; /* 设置单元格内边距为 10px */
-        }
-
-        .button-style {
-        display: inline-block;
-        background-color: #4CAF50; /* Green */
-        color: white;
-        padding: 8px 12px;
-        text-align: center;
-        text-decoration: none;
-        font-size: 16px;
-        margin: 4px 2px;
-        cursor: pointer;
-        border-radius: 5px;
-        }
-
-        .background{
-        margin: 0;
-        background-image: url("images/壁纸2.jpg");
-        background-size: cover;
-        background-repeat: no-repeat;
-        }
-
-
-        </style>
+        <link rel="stylesheet" type="text/css" href="jsons/style.css">
+        <!--声明使用的javaScript文件-->
+        <script src="jsons/title.js" type="text/javaScript"></script>
+        <script src="jsons/background_changer.js" type="text/javaScript"></script>
+        <script src="jsons/task.js" type="text/javaScript"></script>
    </head> 
 
-   <body class="background">
+
+    <body>
+
+        <!--zry logo 模块-->
         <img src="images/zry logo.png"  width="300">
-        <h1 align="center">ZRYのstart</h1>
         
+        <!--背景切换按钮模块-->
+        <div class="container_background_changer">
+            <div class="button_background background_left" onclick="moveButton('left')">蒙德风光</div>
+            <div class="button_background background_right" onclick="moveButton('right')">稻妻夜景</div>
+          </div>
 
+        <!--标题画布模块-->
         <div class="center">
+            <canvas id="title" width="300" height="150" style="border:0px solid">
+            </canvas>
+            <script>write_title();</script>
 
-            <div id="aplayer" class="aplayer" data-autoplay="true"  data-id="7005383388" data-server="netease" data-type="playlist" data-fixed="true" data-listfolded="true" data-order="random" data-theme="#F58EA8"></div>
-            <link rel="stylesheet" href="https://syycdn.netlify.app/css/APlayer.min.css">
-            <script src="https://syycdn.netlify.app/js/APlayer.min.js"></script>
-            <script src="https://syycdn.netlify.app/js/APlayer.min.js"></script>
-            <script src="https://syycdn.netlify.app/js/Meting.min.js"></script>
-            <script src="https://syycdn.netlify.app/js/v3.js";></script>
-        <!--
-        <a href="http://www.baidu.com"  target=_balnk class="button-style">
-            百度一下
-        </a>
-        -->
 
         <form action="http://baidu.com/s" method="get" target=_balnk>
             <label for="wd"></label>
             <input type="search" id="wd" name="wd">
-            <input type="submit" value="百度一下" class="button-style" >
+            <input type="submit" value="百度一下" class="button_search" >
         </form>
         </div>
 
@@ -94,18 +43,16 @@
             <tr>
             <th style=font-size:30px;color:rgb(237,54,197);>待办</th>
             <th style=font-size:30px;color:rgb(5,204,239);>常用网站</th>
-            <th>ZRYの---</th>
+            <th style=font-size:30px;color:rgb(181,211,11);>ZRYの歌单</th>
             </tr>
         </thead>
 
             <tr>
                 
                 <td>
-                    <form method="post" action="date_ok.jsp">
-                        请输入时间<input type="date" name="deadline"/>
-                        <input type="submit"/>
-                    </form>
-                    
+                    <input type="text" id="taskInput" placeholder="添加新待办">
+                    <button onclick="addTask()">添加</button>
+                    <ul id="taskList"></ul>
                 </td>
 
 
@@ -131,18 +78,22 @@
     
 
                 <a href="https://chat.openai.com/" target="_blank">
-                    <img src="images/chatgpt图片.jpg" alt="ChatGPT" width="150">
+                    <img src="images/chatgpt图片.jpg" alt="Github" width="150">
                 </a>
                 <br><br><br>
 
                 </td>
 
-                <td></td>
+                <td>
+                    <!--音乐播放器模块-->
+                <iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width=330 height=450 
+                 src="https://music.163.com/outchain/player?type=0&id=7005383388&auto=1&height=400"></iframe>
+                </td>
 
 
             </tr>
 
         </table>
-
+        
    </body>
-</html>
+</html> 
