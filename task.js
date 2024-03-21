@@ -7,5 +7,5 @@ function addTask() {
       newTask.textContent = taskInput.value;
       taskList.appendChild(newTask);
       taskInput.value = '';
-    }
+    }  
   }
